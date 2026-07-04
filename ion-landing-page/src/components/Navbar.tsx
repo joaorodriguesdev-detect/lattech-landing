@@ -8,20 +8,37 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
   const pathname = usePathname();
 
-  // Se o usuário estiver na página do App, a Navbar principal desaparece
   if (pathname === "/demonstracao") {
     return null;
   }
+
+  // Função Sênior para scroll suave sem sujar a URL
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault(); // Impede o Next.js de colocar a # na URL
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      // Pega a posição do elemento e desconta o tamanho da navbar para não cobrir o título
+      const offset = 100; 
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
 
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      // Estilo "Ilha Flutuante": Centralizada, com margem no topo, bordas arredondadas e blur intenso
-      className="fixed top-4 md:top-6 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:max-w-5xl z-50 px-4 md:px-6 py-3 rounded-2xl md:rounded-[2rem] bg-[#0a0a0a]/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] flex items-center justify-between"
+      className="fixed top-4 md:top-6 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:max-w-5xl z-50 px-4 md:px-6 py-3 rounded-2xl md:rounded-[2rem] bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] flex items-center justify-between"
     >
-      {/* Branding / Logo */}
       <Link href="/" className="flex items-center gap-2 group">
         <div className="relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10 transition-all rounded-full group-hover:shadow-[0_0_20px_rgba(139,92,246,0.4)]">
           <Image 
@@ -37,15 +54,14 @@ export default function Navbar() {
         </span>
       </Link>
 
-      {/* Links Centrais (Exclusivos do Desktop) */}
       <div className="hidden lg:flex items-center gap-8">
-        <Link href="#sobre" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Sobre</Link>
-        <Link href="#como-fazemos" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Como fazemos</Link>
-        <Link href="#quem-atendemos" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Quem atendemos</Link>
+        {/* Trocamos <Link> por <a> para controlarmos o clique manualmente */}
+        <a href="#sobre" onClick={(e) => handleScroll(e, 'sobre')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer">Sobre</a>
+        <a href="#como-fazemos" onClick={(e) => handleScroll(e, 'como-fazemos')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer">Como fazemos</a>
+        <a href="#quem-atendemos" onClick={(e) => handleScroll(e, 'quem-atendemos')} className="text-sm font-medium text-gray-400 hover:text-white transition-colors cursor-pointer">Quem atendemos</a>
         <Link href="/demonstracao" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Nosso App</Link>
       </div>
 
-      {/* Botão Direto com pílula arredondada */}
       <div className="flex items-center">
         <Link
           href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20LATTech."
