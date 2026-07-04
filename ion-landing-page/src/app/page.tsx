@@ -4,6 +4,7 @@ import TargetAudience from "@/components/TargetAudience";
 import IonSystem from "@/components/IonSystem";
 import VideoDemo from "@/components/VideoDemo";
 import FinalCta from "@/components/FinalCta";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -26,6 +27,8 @@ export default function Home() {
 
       {/* Fechamento com a Chamada de Ação */}
       <FinalCta />
+
+      <Footer />
 
     </main>
   );
