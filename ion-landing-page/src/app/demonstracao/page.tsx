@@ -1,11 +1,14 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import VideoDemo from "@/components/VideoDemo";
+import Features from "@/components/Features";
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowLeft, Monitor } from "lucide-react";
 import { useState, useEffect } from "react";
 
+// Nomes das imagens que devem estar na pasta public/
 const dashboardImages = [
   "/dash-1.png",
   "/dash-2.png",
@@ -18,9 +21,10 @@ const dashboardImages = [
   "/dash-9.png",
 ];
 
-export default function IonSystem() {
+export default function DemonstracaoPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Efeito para trocar a imagem automaticamente a cada 4 segundos
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) =>
@@ -32,73 +36,64 @@ export default function IonSystem() {
   }, []);
 
   return (
-    <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <main className="relative min-h-screen bg-[#050505] overflow-hidden">
+      
+      {/* Glows exclusivos da página do App */}
+      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[60%] h-[40%] bg-violet-600/20 blur-[150px] rounded-full pointer-events-none" />
+
+      {/* Navegação minimalista para voltar */}
+      <nav className="relative z-50 px-6 py-6 border-b border-white/5 bg-[#050505]/50 backdrop-blur-md flex justify-between items-center">
+        <Link href="/" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm font-medium">
+          <ArrowLeft className="w-4 h-4" />
+          Voltar para a Agência
+        </Link>
+        <Link 
+          href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Ion%20System." 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="px-5 py-2 text-xs font-bold text-white transition-all rounded-lg bg-gradient-to-r from-violet-600 to-violet-500 hover:shadow-[0_0_20px_rgba(139,92,246,0.4)]"
+        >
+          Falar com Comercial
+        </Link>
+      </nav>
+
+      {/* SEÇÃO 1: VISÃO DESKTOP (CARROSSEL) */}
+      <div className="max-w-7xl mx-auto px-6 pt-20 pb-10 relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 mb-6"
+        >
+          <Monitor className="w-4 h-4 text-violet-400" />
+          <span className="text-sm font-semibold text-violet-200">Visão Desktop Completa</span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6"
+        >
+          Controle total no seu <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-emerald-400">Computador</span>
+        </motion.h1>
         
-        {/* Container de Texto Centralizado */}
-        <div className="flex flex-col items-center text-center">
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 mb-6"
-          >
-            <Sparkles className="w-4 h-4 text-violet-400" />
-            <span className="text-sm font-semibold text-violet-200">Nosso Produto Proprietário</span>
-          </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-16"
+        >
+          Um dashboard poderoso e intuitivo para você gerenciar faturamento, agenda e equipe com uma visão macro do seu negócio.
+        </motion.p>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6 max-w-4xl"
-          >
-            Conheça nosso <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-emerald-400">WebApp Premium</span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base md:text-xl text-gray-400 mb-10 max-w-2xl"
-          >
-            O <strong className="text-white">LatTech</strong> é a prova da nossa excelência. Um ecossistema completo desenvolvido pela IonTech para controle financeiro, gestão de equipes e agendamentos inteligentes.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center gap-4"
-          >
-            {/* BOTÃO ATUALIZADO ABRINDO NOVA ABA */}
-            <Link
-              href="/demonstracao"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 text-sm font-bold text-white transition-all rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
-            >
-              Acessar WebApp Premium Lattech
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </motion.div>
-        </div>
-
-        {/* Mockup Visual com Carrossel Automático */}
+        {/* Mockup do Computador */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-16 md:mt-20 relative mx-auto max-w-5xl"
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="relative mx-auto max-w-5xl"
         >
           <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-2 md:p-4 shadow-2xl relative">
-            
             <div className="rounded-xl overflow-hidden border border-white/5 bg-[#0a0a0a] relative group flex flex-col">
               
               {/* Barra superior estilo macOS */}
@@ -161,6 +156,13 @@ export default function IonSystem() {
           </div>
         </motion.div>
       </div>
-    </section>
+
+      {/* SEÇÃO 2: VISÃO MOBILE (VÍDEO) E FEATURES */}
+      <div className="relative z-10 mt-10 md:mt-20">
+        <VideoDemo />
+        <Features />
+      </div>
+      
+    </main>
   );
 }

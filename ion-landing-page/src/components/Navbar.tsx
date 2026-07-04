@@ -35,8 +35,9 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-8">
           <Link href="#sobre" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Sobre</Link>
           <Link href="#como-fazemos" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Como fazemos</Link>
-          <Link href="#solucoes" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Soluções</Link>
-          <Link href="#produto" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Nosso App</Link>
+          <Link href="#quem-atendemos" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Quem atendemos</Link>
+          {/* LINK ATUALIZADO ABRINDO NOVA ABA */}
+          <Link href="/demonstracao" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Nosso App</Link>
         </div>
 
         {/* Botão Direto (Visível no Mobile e no PC) */}
