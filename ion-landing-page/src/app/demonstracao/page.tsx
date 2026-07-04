@@ -37,7 +37,7 @@ export default function DemonstracaoPage() {
     <main className="relative min-h-screen bg-[#050505] overflow-hidden">
       
       {/* Glows exclusivos da página do App */}
-      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[60%] h-[40%] bg-violet-600/20 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[60%] h-[40%] bg-blue-600/20 blur-[150px] rounded-full pointer-events-none" />
 
       {/* Botão Flutuante de Voltar (Clean e Minimalista) */}
       <Link 
@@ -53,7 +53,7 @@ export default function DemonstracaoPage() {
         href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Ion%20System." 
         target="_blank" 
         rel="noopener noreferrer"
-        className="absolute top-6 right-6 z-50 px-5 py-2 text-xs font-bold text-white transition-all rounded-lg bg-gradient-to-r from-violet-600 to-violet-500 hover:shadow-[0_0_20px_rgba(139,92,246,0.4)]"
+        className="absolute top-6 right-6 z-50 px-5 py-2 text-xs font-bold text-white transition-all rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]"
       >
         Falar com Comercial
       </Link>
@@ -63,10 +63,10 @@ export default function DemonstracaoPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 mb-6"
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6"
         >
-          <Monitor className="w-4 h-4 text-violet-400" />
-          <span className="text-sm font-semibold text-violet-200">Visão Desktop Completa</span>
+          <Monitor className="w-4 h-4 text-sky-400" />
+          <span className="text-sm font-semibold text-sky-200">Visão Desktop Completa</span>
         </motion.div>
 
         <motion.h1
@@ -75,7 +75,7 @@ export default function DemonstracaoPage() {
           transition={{ delay: 0.1 }}
           className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6"
         >
-          Controle total no seu <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-emerald-400">Computador</span>
+          Controle total no seu <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-300">Computador</span>
         </motion.h1>
         
         <motion.p
@@ -101,7 +101,7 @@ export default function DemonstracaoPage() {
               <div className="w-full h-8 md:h-10 border-b border-white/5 flex items-center px-4 gap-2 bg-white/[0.02] shrink-0 z-20">
                 <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-500/30 border border-red-500/50"></div>
                 <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-500/30 border border-yellow-500/50"></div>
-                <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-emerald-500/30 border border-emerald-500/50"></div>
+                <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-sky-400/30 border border-sky-400/50"></div>
               </div>
               
               {/* Contêiner de Imagens - Técnica do Ghost Element */}
@@ -137,8 +137,8 @@ export default function DemonstracaoPage() {
               </div>
 
               {/* Luzes de Glow por cima do Mockup */}
-              <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-violet-500/20 blur-[80px] rounded-full pointer-events-none z-10"></div>
-              <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-emerald-500/20 blur-[80px] rounded-full pointer-events-none z-10"></div>
+              <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/20 blur-[80px] rounded-full pointer-events-none z-10"></div>
+              <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-sky-400/20 blur-[80px] rounded-full pointer-events-none z-10"></div>
             </div>
 
             {/* Pontos de Navegação do Carrossel */}
@@ -148,7 +148,7 @@ export default function DemonstracaoPage() {
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
                   className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    currentIndex === idx ? "w-6 bg-emerald-400" : "w-1.5 bg-white/20 hover:bg-white/40"
+                    currentIndex === idx ? "w-6 bg-sky-300" : "w-1.5 bg-white/20 hover:bg-white/40"
                   }`}
                 />
               ))}

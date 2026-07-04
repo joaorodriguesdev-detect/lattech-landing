@@ -17,12 +17,12 @@ export default function HowWeWork() {
             viewport={{ once: true }}
             className="flex items-center gap-4 mb-6"
           >
-            <div className="h-[1px] w-8 bg-gradient-to-r from-transparent to-violet-500"></div>
-            <div className="px-3 py-1 bg-white/5 border border-white/10 rounded uppercase tracking-widest text-xs font-bold text-gray-400">
-              LAT <span className="text-violet-500">TECH</span>
+            <div className="h-[1px] w-8 bg-gradient-to-r from-transparent to-blue-500"></div>
+                        <div className="px-3 py-1 bg-white/5 border border-white/10 rounded uppercase tracking-widest text-xs font-bold text-gray-400">
+              LAT <span className="text-blue-500">TECH</span>
             </div>
-            <div className="h-[1px] w-8 bg-gradient-to-l from-transparent to-violet-500"></div>
-          </motion.div>
+            <div className="h-[1px] w-8 bg-gradient-to-l from-transparent to-blue-500"></div>
+                      </motion.div>
           
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -43,16 +43,16 @@ export default function HowWeWork() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="relative bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center overflow-hidden group hover:border-violet-500/30 transition-colors"
+            className="relative bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center overflow-hidden group hover:border-blue-500/30 transition-colors"
           >
             {/* Ícone com Efeito Metade-Luz */}
             <div className="relative w-20 h-20 mb-8 flex items-center justify-center">
-              <div className="absolute inset-0 bg-violet-500 rounded-full blur-xl opacity-40 group-hover:opacity-70 transition-opacity"></div>
-              <div className="relative z-10 w-16 h-16 bg-gradient-to-b from-violet-500 to-violet-800 rounded-full flex items-center justify-center clip-bottom">
+              <div className="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-40 group-hover:opacity-70 transition-opacity"></div>
+              <div className="relative z-10 w-16 h-16 bg-gradient-to-b from-blue-500 to-blue-800 rounded-full flex items-center justify-center clip-bottom">
                 <Search className="text-white w-6 h-6" />
               </div>
               {/* Linha de corte visual */}
-              <div className="absolute bottom-2 w-[120%] h-[2px] bg-gradient-to-r from-transparent via-violet-400 to-transparent blur-[1px]"></div>
+              <div className="absolute bottom-2 w-[120%] h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent blur-[1px]"></div>
             </div>
             <p className="text-lg font-medium text-white">Diagnóstico técnico<br/>em até 24h</p>
           </motion.div>
@@ -63,14 +63,14 @@ export default function HowWeWork() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="relative bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center overflow-hidden group hover:border-violet-500/30 transition-colors"
+            className="relative bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center overflow-hidden group hover:border-blue-500/30 transition-colors"
           >
             <div className="relative w-20 h-20 mb-8 flex items-center justify-center">
-              <div className="absolute inset-0 bg-violet-500 rounded-full blur-xl opacity-40 group-hover:opacity-70 transition-opacity"></div>
-              <div className="relative z-10 w-16 h-16 bg-gradient-to-b from-violet-500 to-violet-800 rounded-full flex items-center justify-center clip-bottom">
+              <div className="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-40 group-hover:opacity-70 transition-opacity"></div>
+              <div className="relative z-10 w-16 h-16 bg-gradient-to-b from-blue-500 to-blue-800 rounded-full flex items-center justify-center clip-bottom">
                 <Star className="text-white w-6 h-6" />
               </div>
-              <div className="absolute bottom-2 w-[120%] h-[2px] bg-gradient-to-r from-transparent via-violet-400 to-transparent blur-[1px]"></div>
+              <div className="absolute bottom-2 w-[120%] h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent blur-[1px]"></div>
             </div>
             <p className="text-lg font-medium text-white">Desenvolvimento enxuto,<br/>calibrado com IA</p>
           </motion.div>
@@ -81,14 +81,14 @@ export default function HowWeWork() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="relative bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center overflow-hidden group hover:border-violet-500/30 transition-colors"
+            className="relative bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 flex flex-col items-center text-center overflow-hidden group hover:border-blue-500/30 transition-colors"
           >
             <div className="relative w-20 h-20 mb-8 flex items-center justify-center">
-              <div className="absolute inset-0 bg-violet-500 rounded-full blur-xl opacity-40 group-hover:opacity-70 transition-opacity"></div>
-              <div className="relative z-10 w-16 h-16 bg-gradient-to-b from-violet-500 to-violet-800 rounded-full flex items-center justify-center clip-bottom">
+              <div className="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-40 group-hover:opacity-70 transition-opacity"></div>
+              <div className="relative z-10 w-16 h-16 bg-gradient-to-b from-blue-500 to-blue-800 rounded-full flex items-center justify-center clip-bottom">
                 <Zap className="text-white w-6 h-6" />
               </div>
-              <div className="absolute bottom-2 w-[120%] h-[2px] bg-gradient-to-r from-transparent via-violet-400 to-transparent blur-[1px]"></div>
+              <div className="absolute bottom-2 w-[120%] h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent blur-[1px]"></div>
             </div>
             <p className="text-lg font-medium text-white">Execução com time sênior e<br/>foco absoluto no que importa</p>
           </motion.div>
@@ -102,7 +102,7 @@ export default function HowWeWork() {
             href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20LATTech."
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 text-sm font-bold text-white transition-all rounded-lg bg-gradient-to-r from-violet-600 to-violet-500 hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] hover:scale-105"
+            className="px-8 py-3 text-sm font-bold text-white transition-all rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:shadow-[0_0_25px_rgba(37,99,235,0.5)] hover:scale-105"
           >
             Falar com especialista
           </Link>

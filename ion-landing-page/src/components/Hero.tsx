@@ -8,8 +8,8 @@ export default function Hero() {
   return (
     <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 overflow-hidden border-b border-white/5">
       
-      {/* O Clarão Roxo na Esquerda (Estilo Print 1) */}
-      <div className="absolute top-[-10%] left-[-20%] w-[800px] h-[800px] bg-violet-600/40 blur-[180px] rounded-full pointer-events-none" />
+      {/* O Clarão Azul Corporativo na Esquerda */}
+      <div className="absolute top-[-10%] left-[-20%] w-[400px] h-[400px] md:w-[800px] md:h-[800px] bg-blue-600/20 md:bg-blue-600/30 blur-[120px] md:blur-[180px] rounded-full pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center">
@@ -18,10 +18,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md shadow-[0_0_15px_rgba(59,130,246,0.1)]"
           >
-            <Terminal className="w-4 h-4 text-violet-400" />
-            <span className="text-sm font-semibold text-gray-200 tracking-wide">LATTECH • Decolando sua empresa</span>
+            <Terminal className="w-4 h-4 text-sky-400" />
+            <span className="text-sm font-semibold text-gray-200 tracking-wide">LATTech • Engenharia de Software</span>
           </motion.div>
 
           <motion.h1
@@ -30,7 +30,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-8 max-w-5xl leading-tight"
           >
-            Transformamos desafios em software sob medida com até <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-violet-600">50% mais agilidade</span>
+            Transformamos desafios em software sob medida com até <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">50% mais agilidade</span>
           </motion.h1>
 
           <motion.p
@@ -52,7 +52,8 @@ export default function Hero() {
               href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20LATTech."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-full sm:w-auto px-10 py-5 text-base font-bold text-white transition-all rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] hover:scale-105"
+              // Botão com degrade Azul Premium
+              className="flex items-center justify-center w-full sm:w-auto px-10 py-5 text-base font-bold text-white transition-all rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:scale-105"
             >
               Falar com especialista
             </Link>

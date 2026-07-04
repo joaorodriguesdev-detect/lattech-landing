@@ -16,7 +16,7 @@ export default function VideoDemo() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            A experiência na <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-violet-500">palma da mão</span>
+            A experiência na <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-blue-500">palma da mão</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             100% responsivo. Seus clientes agendam e sua equipe gerencia tudo de qualquer dispositivo, com uma interface fluida e moderna.
@@ -55,8 +55,8 @@ export default function VideoDemo() {
           </div>
 
           {/* Glows de Luz por trás do celular para dar destaque */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-violet-500/20 blur-[100px] rounded-full z-10 pointer-events-none opacity-50 transition-opacity group-hover:opacity-80"></div>
-          <div className="absolute bottom-0 right-0 w-full h-full bg-emerald-500/10 blur-[80px] rounded-full z-10 pointer-events-none"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-blue-500/20 blur-[100px] rounded-full z-10 pointer-events-none opacity-50 transition-opacity group-hover:opacity-80"></div>
+          <div className="absolute bottom-0 right-0 w-full h-full bg-sky-400/10 blur-[80px] rounded-full z-10 pointer-events-none"></div>
         </motion.div>
 
       </div>

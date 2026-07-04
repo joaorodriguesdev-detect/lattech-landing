@@ -40,7 +40,7 @@ export default function Navbar() {
       className="fixed top-4 md:top-6 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:max-w-5xl z-50 px-4 md:px-6 py-3 rounded-2xl md:rounded-[2rem] bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] flex items-center justify-between"
     >
       <Link href="/" className="flex items-center gap-2 group">
-        <div className="relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10 transition-all rounded-full group-hover:shadow-[0_0_20px_rgba(139,92,246,0.4)]">
+        <div className="relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10 transition-all rounded-full group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
           <Image 
             src="/logo.png" 
             alt="Logo LATTECH"
@@ -50,7 +50,7 @@ export default function Navbar() {
           />
         </div>
         <span className="text-base md:text-xl font-extrabold tracking-tight text-white uppercase">
-          LAT<span className="text-violet-500">TECH</span>
+          LAT<span className="text-blue-500">TECH</span>
         </span>
       </Link>
 
@@ -67,7 +67,7 @@ export default function Navbar() {
           href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20LATTech."
           target="_blank"
           rel="noopener noreferrer"
-          className="px-4 py-2 md:px-6 md:py-2.5 text-xs md:text-sm font-bold text-white transition-all rounded-lg md:rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 hover:shadow-[0_0_25px_rgba(139,92,246,0.6)] hover:scale-105"
+          className="px-4 py-2 md:px-6 md:py-2.5 text-xs md:text-sm font-bold text-white transition-all rounded-lg md:rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:shadow-[0_0_25px_rgba(37,99,235,0.6)] hover:scale-105"
         >
           Falar com especialista
         </Link>

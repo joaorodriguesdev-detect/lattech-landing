@@ -9,15 +9,15 @@ const features = [
     title: "Dashboard Financeiro",
     description: "Métricas precisas em tempo real. Controle faturamento, despesas e lucro líquido com gráficos imersivos e claros.",
     icon: TrendingUp,
-    glow: "group-hover:shadow-[0_0_20px_rgba(16,185,129,0.2)]",
-    iconColor: "text-emerald-400",
+    glow: "group-hover:shadow-[0_0_20px_rgba(56,189,248,0.2)]",
+    iconColor: "text-sky-300",
   },
   {
     title: "Equipe e Comissões",
     description: "Cálculo automático de comissionamento. Divida pagamentos e gerencie a performance de cada barbeiro sem dor de cabeça.",
     icon: Users,
-    glow: "group-hover:shadow-[0_0_20px_rgba(139,92,246,0.2)]",
-    iconColor: "text-violet-400",
+    glow: "group-hover:shadow-[0_0_20px_rgba(37,99,235,0.2)]",
+    iconColor: "text-sky-400",
   },
   {
     title: "Agendamentos VIP",
@@ -40,7 +40,7 @@ export default function Features() {
     <section id="features" className="relative py-24 md:py-32 overflow-hidden">
       
       {/* Glow de fundo sutil para a seção de features */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] glow-violet rounded-full blur-[120px] opacity-10 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] glow-blue rounded-full blur-[120px] opacity-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         

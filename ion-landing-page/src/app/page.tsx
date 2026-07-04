@@ -11,8 +11,8 @@ export default function Home() {
     <main className="relative min-h-screen overflow-hidden bg-[#050505]">
       
       {/* Efeitos de Luz de Fundo Otimizados */}
-      <div className="absolute top-[-10%] left-[-10%] w-[80%] md:w-[50%] h-[50%] bg-violet-600/30 blur-[80px] md:blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute top-[20%] right-[-10%] w-[80%] md:w-[50%] h-[50%] bg-emerald-600/10 md:bg-emerald-600/20 blur-[80px] md:blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[-10%] left-[-10%] w-[80%] md:w-[50%] h-[50%] bg-blue-600 blur-[80px] md:blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[20%] right-[-10%] w-[80%] md:w-[50%] h-[50%] bg-sky-500/10 md:bg-sky-500/20 blur-[80px] md:blur-[150px] rounded-full pointer-events-none" />
 
       {/* Componentes da Agência Tech */}
       <Hero />

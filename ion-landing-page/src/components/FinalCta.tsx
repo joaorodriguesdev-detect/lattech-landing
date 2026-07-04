@@ -16,7 +16,8 @@ export default function FinalCta() {
           className="relative rounded-[2rem] bg-[#0a0a0a] border border-white/5 p-10 md:p-20 overflow-hidden text-center shadow-2xl"
         >
           {/* Brilho Inferior (Glow) */}
-          <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[120%] md:w-[80%] h-[60%] bg-violet-600/40 blur-[100px] pointer-events-none rounded-t-full"></div>
+
+          <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[120%] md:w-[80%] h-[60%] bg-blue-600/40 blur-[100px] pointer-events-none rounded-t-full"></div>
           
           <div className="relative z-10">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6">
@@ -54,7 +55,8 @@ export default function FinalCta() {
             href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20IonTech."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-10 py-4 text-base font-bold text-white transition-all rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] hover:scale-105"
+
+            className="inline-flex items-center justify-center px-10 py-4 text-base font-bold text-white transition-all rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] hover:scale-105"
           >
             Falar com especialista
           </Link>

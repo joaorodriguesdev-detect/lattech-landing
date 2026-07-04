@@ -5,8 +5,8 @@
   --color-ion-dark: #050505;
   --color-ion-card: rgba(255, 255, 255, 0.05);
   --color-ion-border: rgba(255, 255, 255, 0.1);
-  --color-ion-violet: #8b5cf6;
-  --color-ion-emerald: #10b981;
+  --color-ion-blue: #2563eb;
+  --color-ion-sky: #38bdf8;
 }
 
 @layer base {
@@ -19,11 +19,11 @@
 }
 
 @layer utilities {
-  .glow-violet {
-    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  .glow-blue {
+    background: radial-gradient(circle at center, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
   }
-  .glow-emerald {
-    background: radial-gradient(circle at center, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+  .glow-sky {
+    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
   }
 }
 
