@@ -27,7 +27,7 @@ export default function Navbar() {
             />
           </div>
           <span className="text-lg md:text-2xl font-bold tracking-tight text-white">
-            Lat<span className="text-violet-500">Tech</span>
+            LAT<span className="text-violet-500">Tech</span>
           </span>
         </Link>
 

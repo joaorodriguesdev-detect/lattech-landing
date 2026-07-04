@@ -1,0 +1,22 @@
+name: Deploy Automático
+on:
+  push:
+    branches:
+      - main  # Ou o nome da sua branch principal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/lattech-landing/ion-landing-page
+            git pull origin main
+            npm install
+            npm run build
+            pm2 restart lattech-landing
