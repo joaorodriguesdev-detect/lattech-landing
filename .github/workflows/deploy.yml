@@ -1,0 +1,6 @@
+script: |
+  cd /var/www/lattech-landing/ion-landing-page
+  git pull origin main
+  npm install
+  npm run build
+  pm2 restart lattech-landing
