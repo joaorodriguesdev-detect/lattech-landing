@@ -34,7 +34,7 @@ export default function Navbar() {
             />
           </div>
           <span className="text-lg md:text-2xl font-bold tracking-tight text-white">
-            Ion<span className="text-violet-500">Tech</span>
+            LAT<span className="text-violet-500">TECH</span>
           </span>
         </Link>
 

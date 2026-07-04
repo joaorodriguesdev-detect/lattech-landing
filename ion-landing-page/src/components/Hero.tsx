@@ -21,7 +21,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md"
           >
             <Terminal className="w-4 h-4 text-violet-400" />
-            <span className="text-sm font-semibold text-gray-200 tracking-wide">LATTech • Decolando sua empresa</span>
+            <span className="text-sm font-semibold text-gray-200 tracking-wide">LATTECH • Decolando sua empresa</span>
           </motion.div>
 
           <motion.h1

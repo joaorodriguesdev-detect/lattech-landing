@@ -19,7 +19,7 @@ export default function HowWeWork() {
           >
             <div className="h-[1px] w-8 bg-gradient-to-r from-transparent to-violet-500"></div>
             <div className="px-3 py-1 bg-white/5 border border-white/10 rounded uppercase tracking-widest text-xs font-bold text-gray-400">
-              io <span className="text-violet-500">x</span>
+              LAT <span className="text-violet-500">TECH</span>
             </div>
             <div className="h-[1px] w-8 bg-gradient-to-l from-transparent to-violet-500"></div>
           </motion.div>
