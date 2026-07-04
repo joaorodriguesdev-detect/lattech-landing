@@ -66,7 +66,7 @@ export default function IonSystem() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-base md:text-xl text-gray-400 mb-10 max-w-2xl"
           >
-            O <strong className="text-white">LatTech</strong> é a prova da nossa excelência. Um ecossistema completo desenvolvido pela IonTech para controle financeiro, gestão de equipes e agendamentos inteligentes.
+            O <strong className="text-white">LATSystem</strong> é a prova da nossa excelência. Um ecossistema completo desenvolvido pela LATTECH para controle financeiro, gestão de equipes e agendamentos inteligentes.
           </motion.p>
 
           <motion.div
