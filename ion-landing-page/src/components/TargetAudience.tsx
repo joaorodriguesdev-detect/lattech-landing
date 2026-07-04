@@ -1,79 +1,114 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Rocket, TerminalSquare, Network, Target } from "lucide-react";
 
 export default function TargetAudience() {
   return (
-    <section id="quem-atendemos" className="relative py-24 bg-[#050505] overflow-hidden border-b border-white/5">
+    <section id="quem-atendemos" className="relative py-24 md:py-32 bg-[#050505] overflow-hidden border-b border-white/5">
+      
+      {/* Background Glow sutil no topo da seção */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-violet-600/10 blur-[150px] rounded-full pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
-          
-          {/* Coluna da Esquerda - Título */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+
+        {/* Cabeçalho Centralizado (Totalmente diferente da concorrência) */}
+        <div className="flex flex-col items-center text-center mb-16 md:mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-4"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 mb-6"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">Quem atendemos</h2>
-              <Sparkles className="w-5 h-5 text-violet-500" />
-            </div>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              Empresas que exigem alto nível técnico, agilidade na entrega e soluções sem desperdício de tempo. Se você sabe o valor de uma engenharia de software bem feita, nós somos o seu time.
-            </p>
+            <Target className="w-4 h-4 text-violet-400" />
+            <span className="text-sm font-semibold text-violet-200 uppercase tracking-widest">Perfil Ideal</span>
           </motion.div>
 
-          {/* Coluna da Direita - Lista Numerada */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-8 lg:pl-12"
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-5xl font-extrabold text-white tracking-tight max-w-3xl mb-6"
           >
-            <div className="flex flex-col">
-              
-              {/* Item 01 */}
-              <div className="flex flex-col md:flex-row gap-6 pb-10 border-b border-white/10 mb-10 group">
-                <span className="text-6xl md:text-7xl font-bold text-transparent transition-colors duration-500 [-webkit-text-stroke:1px_rgba(255,255,255,0.2)] group-hover:[-webkit-text-stroke:1px_rgba(139,92,246,0.8)]">
-                  01
-                </span>
-                <div className="mt-2">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors">Buscam escalar ou modernizar rápido</h3>
-                  <p className="text-gray-400">
-                    Atuamos com engenharia de ponta e inteligência artificial para entregar resultados reais antes do prazo do mercado, destravando o gargalo tecnológico da sua operação.
-                  </p>
-                </div>
-              </div>
+            Engenharia para empresas que <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-emerald-400">não têm tempo a perder</span>
+          </motion.h2>
 
-              {/* Item 02 */}
-              <div className="flex flex-col md:flex-row gap-6 pb-10 border-b border-white/10 mb-10 group">
-                <span className="text-6xl md:text-7xl font-bold text-transparent transition-colors duration-500 [-webkit-text-stroke:1px_rgba(255,255,255,0.2)] group-hover:[-webkit-text-stroke:1px_rgba(139,92,246,0.8)]">
-                  02
-                </span>
-                <div className="mt-2">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors">Exigem código limpo e arquitetura robusta</h3>
-                  <p className="text-gray-400">
-                    Criamos sistemas sob medida para a sua dor atual, garantindo que a base de código suporte o crescimento de amanhã. Sem exageros, calibrado exatamente para o que você precisa.
-                  </p>
-                </div>
-              </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-400 text-lg max-w-2xl"
+          >
+            Nós não somos uma agência tradicional. Somos uma equipe de especialistas que entra para resolver gargalos complexos e acelerar seu faturamento através da tecnologia.
+          </motion.p>
+        </div>
 
-              {/* Item 03 */}
-              <div className="flex flex-col md:flex-row gap-6 group">
-                <span className="text-6xl md:text-7xl font-bold text-transparent transition-colors duration-500 [-webkit-text-stroke:1px_rgba(255,255,255,0.2)] group-hover:[-webkit-text-stroke:1px_rgba(139,92,246,0.8)]">
-                  03
-                </span>
-                <div className="mt-2">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors">Querem parceiros estratégicos, não apenas codificadores</h3>
-                  <p className="text-gray-400">
-                    Unimos expertise técnica com visão de mercado corporativo. Nossos especialistas tomam decisões de arquitetura que impactam diretamente a economia e o lucro da sua empresa.
-                  </p>
-                </div>
-              </div>
+        {/* Grid de 3 Colunas (Cards Premium ao invés de lista numérica) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
 
+          {/* Card 1 */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="relative bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 hover:border-violet-500/40 transition-all duration-300 group overflow-hidden"
+          >
+            {/* Efeito de luz interna no hover */}
+            <div className="absolute inset-0 bg-gradient-to-br from-violet-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:-translate-y-2 group-hover:bg-violet-500/20 group-hover:border-violet-500/50 transition-all duration-300 shadow-lg">
+                <Rocket className="w-6 h-6 text-violet-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">Escala Rápida e Segura</h3>
+              <p className="text-gray-400 leading-relaxed">
+                Você tem urgência em modernizar sua operação. Aplicamos inteligência artificial e arquitetura de ponta para entregar resultados tangíveis muito antes do prazo comum do mercado.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Card 2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="relative bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 hover:border-emerald-500/40 transition-all duration-300 group overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:-translate-y-2 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/50 transition-all duration-300 shadow-lg">
+                <TerminalSquare className="w-6 h-6 text-emerald-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">Código Limpo, Zero Excesso</h3>
+              <p className="text-gray-400 leading-relaxed">
+                Desenvolvemos sistemas sob medida, calibrados exatamente para a sua necessidade real. Uma base de código robusta e preparada para o futuro. Apenas performance.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Card 3 */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="relative bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 hover:border-violet-500/40 transition-all duration-300 group overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-violet-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 group-hover:-translate-y-2 group-hover:bg-violet-500/20 group-hover:border-violet-500/50 transition-all duration-300 shadow-lg">
+                <Network className="w-6 h-6 text-violet-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">Parceiros Estratégicos</h3>
+              <p className="text-gray-400 leading-relaxed">
+                Você precisa de inteligência técnica, não só de braço operacional. Unimos nossa expertise em engenharia com visão de negócios para arquitetar soluções que maximizam sua margem de lucro.
+              </p>
             </div>
           </motion.div>
 
