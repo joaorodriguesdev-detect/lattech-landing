@@ -97,12 +97,16 @@ export default function HowWeWork() {
 
         {/* CTA Central */}
         <div className="flex justify-center">
+          <div className="flex justify-center">
           <Link
-            href="#contato"
+            href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20LATTech."
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-3 text-sm font-bold text-white transition-all rounded-lg bg-gradient-to-r from-violet-600 to-violet-500 hover:shadow-[0_0_25px_rgba(139,92,246,0.5)] hover:scale-105"
           >
             Falar com especialista
           </Link>
+        </div>
         </div>
 
       </div>

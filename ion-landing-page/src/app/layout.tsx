@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Ion Tech | Agencia de Tecnologia",
+  title: "LATTech | Agencia de Tecnologia",
   description: "WebApp SaaS de alta performance para Empresas de alto nível.",
 };
 

@@ -21,7 +21,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md"
           >
             <Terminal className="w-4 h-4 text-violet-400" />
-            <span className="text-sm font-semibold text-gray-200 tracking-wide">LatTech • Engenharia de Software</span>
+            <span className="text-sm font-semibold text-gray-200 tracking-wide">LATTech • Decolando sua empresa</span>
           </motion.div>
 
           <motion.h1
@@ -49,7 +49,9 @@ export default function Hero() {
             className="flex w-full sm:w-auto"
           >
             <Link
-              href="#contato"
+              href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20LATTech."
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center w-full sm:w-auto px-10 py-5 text-base font-bold text-white transition-all rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] hover:scale-105"
             >
               Falar com especialista

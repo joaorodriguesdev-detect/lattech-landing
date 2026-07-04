@@ -42,7 +42,9 @@ export default function Navbar() {
         {/* Botão Direto (Visível no Mobile e no PC) */}
         <div className="flex items-center">
           <Link
-            href="#contato"
+            href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20LATTech."
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-4 py-2 md:px-6 md:py-2.5 text-xs md:text-sm font-bold text-white transition-all rounded-lg bg-gradient-to-r from-violet-600 to-violet-400 hover:shadow-[0_0_25px_rgba(139,92,246,0.6)] hover:scale-105"
           >
             Fale com especialista
