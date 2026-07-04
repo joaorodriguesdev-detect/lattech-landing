@@ -8,7 +8,6 @@ import Image from "next/image";
 import { ArrowLeft, Monitor } from "lucide-react";
 import { useState, useEffect } from "react";
 
-// Nomes das imagens que devem estar na pasta public/
 const dashboardImages = [
   "/dash-1.png",
   "/dash-2.png",
@@ -24,7 +23,6 @@ const dashboardImages = [
 export default function DemonstracaoPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Efeito para trocar a imagem automaticamente a cada 4 segundos
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) =>
@@ -41,24 +39,27 @@ export default function DemonstracaoPage() {
       {/* Glows exclusivos da página do App */}
       <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[60%] h-[40%] bg-violet-600/20 blur-[150px] rounded-full pointer-events-none" />
 
-      {/* Navegação minimalista para voltar */}
-      <nav className="relative z-50 px-6 py-6 border-b border-white/5 bg-[#050505]/50 backdrop-blur-md flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm font-medium">
-          <ArrowLeft className="w-4 h-4" />
-          Voltar para a Agência
-        </Link>
-        <Link 
-          href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Ion%20System." 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="px-5 py-2 text-xs font-bold text-white transition-all rounded-lg bg-gradient-to-r from-violet-600 to-violet-500 hover:shadow-[0_0_20px_rgba(139,92,246,0.4)]"
-        >
-          Falar com Comercial
-        </Link>
-      </nav>
+      {/* Botão Flutuante de Voltar (Clean e Minimalista) */}
+      <Link 
+        href="/" 
+        className="absolute top-6 left-6 z-50 flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 hover:bg-white/10 text-gray-400 hover:text-white rounded-xl backdrop-blur-md transition-all text-sm font-medium"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        Voltar
+      </Link>
+
+      {/* Botão Comercial Flutuante no canto direito (Opcional, mas bom pra conversão) */}
+      <Link 
+        href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Ion%20System." 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="absolute top-6 right-6 z-50 px-5 py-2 text-xs font-bold text-white transition-all rounded-lg bg-gradient-to-r from-violet-600 to-violet-500 hover:shadow-[0_0_20px_rgba(139,92,246,0.4)]"
+      >
+        Falar com Comercial
+      </Link>
 
       {/* SEÇÃO 1: VISÃO DESKTOP (CARROSSEL) */}
-      <div className="max-w-7xl mx-auto px-6 pt-20 pb-10 relative z-10 text-center">
+      <div className="max-w-7xl mx-auto px-6 pt-28 pb-10 relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
