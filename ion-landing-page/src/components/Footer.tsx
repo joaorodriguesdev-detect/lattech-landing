@@ -64,7 +64,7 @@ export default function Footer() {
           <div className="md:col-span-3 lg:col-span-2">
             <h4 className="text-white font-bold mb-6 tracking-wide text-sm uppercase">Soluções</h4>
             <ul className="space-y-4">
-              <li><Link href="/demonstracao" target="_blank" className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1 group">Ion System (App) <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" /></Link></li>
+              <li><Link href="/demonstracao" target="_blank" className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1 group">LAT System (App) <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" /></Link></li>
               <li><Link href="#solucoes" className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1 group">Engenharia de Software <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" /></Link></li>
               <li><Link href="#solucoes" className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1 group">Integrações de IA <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" /></Link></li>
             </ul>
