@@ -1,8 +1,8 @@
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import HowWeWork from "@/components/HowWeWork";
-import TargetAudience from "@/components/TargetAudience";
-import IonSystem from "@/components/IonSystem";
-import VideoDemo from "@/components/VideoDemo";
+import IonSystem from "@/components/IonSystem"; // O seu Carrossel Desktop do Barbeiro
+import VideoDemo from "@/components/VideoDemo"; // O seu Mockup com Vídeo Mobile
+import Features from "@/components/Features"; // Onde vamos colocar os benefícios (fim dos furos, comissões)
 import FinalCta from "@/components/FinalCta";
 import Footer from "@/components/Footer";
 
@@ -10,24 +10,26 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#050505]">
       
-      {/* Efeitos de Luz de Fundo Otimizados */}
-      <div className="absolute top-[-10%] left-[-10%] w-[80%] md:w-[50%] h-[50%] bg-blue-600 blur-[80px] md:blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute top-[20%] right-[-10%] w-[80%] md:w-[50%] h-[50%] bg-sky-500/10 md:bg-sky-500/20 blur-[80px] md:blur-[150px] rounded-full pointer-events-none" />
+      {/* Luzes de Fundo (Azul e Ciano) */}
+      <div className="absolute top-[-5%] left-[-10%] w-[60%] md:w-[50%] h-[40%] bg-blue-600/10 md:bg-blue-600/20 blur-[80px] md:blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[20%] right-[-10%] w-[60%] md:w-[50%] h-[40%] bg-sky-500/5 md:bg-sky-500/10 blur-[80px] md:blur-[150px] rounded-full pointer-events-none" />
 
-      {/* Componentes da Agência Tech */}
-      <Hero />
-      <HowWeWork />
-      <TargetAudience />
+      <Navbar />
       
-      {/* O Nosso Produto Proprietário */}
+      {/* 1. A Promessa Forte (Ex: A agenda que lota sua barbearia) */}
+      <Hero />
+      
+      {/* 2. O Dashboard no Desktop girando no automático */}
       <IonSystem /> 
       
-      {/* A Demonstração Mobile de volta na Home! */}
+      {/* 3. A Experiência fluida na mão do Barbeiro */}
       <VideoDemo />
 
-      {/* Fechamento com a Chamada de Ação */}
-      <FinalCta />
+      {/* 4. Como resolvemos as dores dele */}
+      <Features />
 
+      {/* 5. Fechamento de Vendas */}
+      <FinalCta />
       <Footer />
 
     </main>
