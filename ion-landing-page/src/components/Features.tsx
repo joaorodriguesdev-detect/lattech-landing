@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { CalendarDays, Users, TrendingUp, WalletCards } from "lucide-react";
 
-// Array de dados para facilitar a manutenção futura
 const features = [
   {
     title: "Dashboard Financeiro",
@@ -14,10 +13,10 @@ const features = [
   },
   {
     title: "Equipe e Comissões",
-    description: "Cálculo automático de comissionamento. Divida pagamentos e gerencie a performance de cada barbeiro sem dor de cabeça.",
+    description: "Cálculo automático de comissionamento. Divida pagamentos e gerencie a performance da equipe sem dor de cabeça.",
     icon: Users,
     glow: "group-hover:shadow-[0_0_20px_rgba(37,99,235,0.2)]",
-    iconColor: "text-sky-400",
+    iconColor: "text-blue-400",
   },
   {
     title: "Agendamentos VIP",
@@ -30,21 +29,20 @@ const features = [
     title: "Gestão de Caixa",
     description: "Fechamento de caixa em poucos cliques. Múltiplos métodos de pagamento, controle de gorjetas e extratos detalhados.",
     icon: WalletCards,
-    glow: "group-hover:shadow-[0_0_20px_rgba(244,63,94,0.2)]",
-    iconColor: "text-rose-400",
+    glow: "group-hover:shadow-[0_0_20px_rgba(37,99,235,0.2)]",
+    iconColor: "text-blue-500",
   },
 ];
 
 export default function Features() {
   return (
-    <section id="features" className="relative py-24 md:py-32 overflow-hidden">
+    // Alterado o id de "features" para "funcionalidades" para parear com a Navbar[cite: 2]
+    <section id="funcionalidades" className="relative py-24 md:py-32 overflow-hidden">
       
-      {/* Glow de fundo sutil para a seção de features */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] glow-blue rounded-full blur-[120px] opacity-10 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Cabeçalho da Seção */}
         <div className="flex flex-col items-center text-center mb-16 md:mb-24">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -58,7 +56,6 @@ export default function Features() {
           </motion.h2>
         </div>
 
-        {/* Grid de Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
@@ -66,7 +63,6 @@ export default function Features() {
             return (
               <motion.div
                 key={index}
-                // Animação em cascata (stagger) baseada no index
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}

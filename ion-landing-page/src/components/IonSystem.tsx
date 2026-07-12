@@ -32,10 +32,11 @@ export default function IonSystem() {
   }, []);
 
   return (
-    <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
+    // Adicionado o id="plataforma" para o scroll da Navbar funcionar[cite: 2]
+    <section id="plataforma" className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Container de Texto Centralizado */}
+        {/* Container de Texto Centralizado - Copy Atualizada para o Nicho */}
         <div className="flex flex-col items-center text-center">
           
           <motion.div
@@ -46,7 +47,7 @@ export default function IonSystem() {
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6"
           >
             <Sparkles className="w-4 h-4 text-sky-400" />
-            <span className="text-sm font-semibold text-sky-200">Nosso Produto Proprietário</span>
+            <span className="text-sm font-semibold text-sky-200">Central de Comando</span>
           </motion.div>
 
           <motion.h2
@@ -56,7 +57,7 @@ export default function IonSystem() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6 max-w-4xl"
           >
-            Conheça nosso <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-300">WebApp Premium</span>
+            Sua empresa mais organizada, lucrativa e <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-300">no controle</span>
           </motion.h2>
 
           <motion.p
@@ -66,7 +67,7 @@ export default function IonSystem() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-base md:text-xl text-gray-400 mb-10 max-w-2xl"
           >
-            O <strong className="text-white">LATSystem</strong> é a prova da nossa excelência. Um ecossistema completo desenvolvido pela LATTECH para controle financeiro, gestão de equipes e agendamentos inteligentes.
+            Acabe com os furos de agenda, calcule comissões no automático e receba agendamentos 24h por dia. O <strong className="text-white">LAT System</strong> é uma plataforma construída com engenharia de ponta para escalar o seu negócio.
           </motion.p>
 
           <motion.div
@@ -76,14 +77,13 @@ export default function IonSystem() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center gap-4"
           >
-            {/* BOTÃO ATUALIZADO ABRINDO NOVA ABA */}
             <Link
-              href="/demonstracao"
+              href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20ativar%20meus%2015%20dias%20grátis%20no%20LAT%20System."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 text-sm font-bold text-white transition-all rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+              className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 text-sm font-bold text-white transition-all rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:scale-105"
             >
-              Acessar WebApp Premium Lattech
+              Começar Teste Grátis
               <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
@@ -129,7 +129,7 @@ export default function IonSystem() {
                   >
                     <Image
                       src={dashboardImages[currentIndex]}
-                      alt={`Interface Ion System - Tela ${currentIndex + 1}`}
+                      alt={`Interface LAT System - Tela ${currentIndex + 1}`}
                       width={1920}
                       height={1080}
                       priority={currentIndex === 0}
