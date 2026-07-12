@@ -79,7 +79,7 @@ export default function Navbar() {
 
       <div className="flex items-center">
         <Link
-          // Atualizado para combinar com o CTA final de PllG
+          // Atualizado para combinar com o CTA final de PlG
           href="https://wa.me/5541995707907?text=Olá!%20Gostaria%20de%20ativar%20meus%2015%20dias%20grátis%20no%20LAT%20System."
           target="_blank"
           rel="noopener noreferrer"
