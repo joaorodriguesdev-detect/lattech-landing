@@ -7,15 +7,18 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const dashboardImages = [
-  "/dash-1.png",
-  "/dash-2.png",
-  "/dash-3.png",
-  "/dash-4.png",
-  "/dash-5.png",
-  "/dash-6.png",
-  "/dash-7.png",
-  "/dash-8.png",
-  "/dash-9.png",
+  "/lt1.png",
+  "/lt2.png",
+  "/lt3.png",
+  "/lt4.png",
+  "/lt5.png",
+  "/lt6.png",
+  "/lt7.png",
+  "/lt8.png",
+  "/lt9.png",
+  "/lt10.png",
+  "/lt11.png",
+
 ];
 
 export default function IonSystem() {
