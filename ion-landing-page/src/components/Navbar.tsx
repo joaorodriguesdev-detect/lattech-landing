@@ -58,7 +58,7 @@ export default function Navbar() {
       <Link href="/" className="flex items-center gap-2 group">
         <div className="relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10 transition-all rounded-full group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
           <Image 
-            src="/logo.png" 
+            src="/logo2.png" 
             alt="Logo LATTECH"
             width={40} 
             height={40}
