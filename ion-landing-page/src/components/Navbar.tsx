@@ -50,7 +50,7 @@ export default function Navbar() {
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
-      // A mágica acontece aqui: animamos o eixo Y baseaado no estado "hiddenn"
+      // A mágica acontece aqui: animamos o eixo Y baseaado no estado "hidenn"
       animate={{ y: hidden ? -150 : 0, opacity: hidden ? 0 : 1 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
       className="fixed top-4 md:top-6 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:max-w-5xl z-50 px-4 md:px-6 py-3 rounded-2xl md:rounded-[2rem] bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] flex items-center justify-between"
