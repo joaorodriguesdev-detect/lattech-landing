@@ -35,7 +35,7 @@ export default function IonSystem() {
   }, []);
 
   return (
-    // Adicionado o id="plataforma" para o scroll da Navbar funcionar[cite: 2]
+    // Adicionado o id="plataforma" para o scroll da Navbar funcionarr[cite: 2]
     <section id="plataforma" className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
