@@ -44,7 +44,7 @@ export default function Footer() {
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
               </a>
-              <a href="mailto:contato@lattech.com.br" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-300">
+              <a href="mailto:lattechapp@gmail.com" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-300">
                 <Mail className="w-4 h-4" />
               </a>
             </div>
@@ -81,8 +81,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:contato@lattech.com.br" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  contato@lattech.com.br
+                <a href="mailto:lattechapp@gmail.com" className="text-sm text-gray-400 hover:text-white transition-colors">
+                lattechapp@gmail.com
                 </a>
               </li>
             </ul>
