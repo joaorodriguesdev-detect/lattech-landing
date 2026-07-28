@@ -3,44 +3,33 @@
 import { motion } from "framer-motion";
 import { CalendarDays, Users, TrendingUp, WalletCards } from "lucide-react";
 
+// Array limpo: Sem cores específicas, tudo padronizado no tema minimalista
 const features = [
   {
     title: "Dashboard Financeiro",
     description: "Métricas precisas em tempo real. Controle faturamento, despesas e lucro líquido com gráficos imersivos e claros.",
     icon: TrendingUp,
-    glow: "group-hover:shadow-[0_0_20px_rgba(56,189,248,0.2)]",
-    iconColor: "text-sky-300",
   },
   {
     title: "Equipe e Comissões",
     description: "Cálculo automático de comissionamento. Divida pagamentos e gerencie a performance da equipe sem dor de cabeça.",
     icon: Users,
-    glow: "group-hover:shadow-[0_0_20px_rgba(37,99,235,0.2)]",
-    iconColor: "text-blue-400",
   },
   {
     title: "Agendamentos VIP",
     description: "Calendário interativo para você e seus clientes. Reduza faltas com lembretes automatizados e gestão de horários fluida.",
     icon: CalendarDays,
-    glow: "group-hover:shadow-[0_0_20px_rgba(56,189,248,0.2)]",
-    iconColor: "text-sky-400",
   },
   {
     title: "Gestão de Caixa",
     description: "Fechamento de caixa em poucos cliques. Múltiplos métodos de pagamento, controle de gorjetas e extratos detalhados.",
     icon: WalletCards,
-    glow: "group-hover:shadow-[0_0_20px_rgba(37,99,235,0.2)]",
-    iconColor: "text-blue-500",
   },
 ];
 
 export default function Features() {
   return (
-    // Alterado o id de "features" para "funcionalidades" para parear com a Navbar[cite: 2]
-    <section id="funcionalidades" className="relative py-24 md:py-32 overflow-hidden">
-      
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-
+    <section id="funcionalidades" className="relative py-24 md:py-32 overflow-hidden bg-[#050505]">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         <div className="flex flex-col items-center text-center mb-16 md:mb-24">
@@ -67,11 +56,12 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group relative p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 ${feature.glow}`}
+                // Hover sutil apenas na borda e fundo, sem sombras coloridas
+                className="group relative p-8 rounded-2xl bg-[#0a0a0a] border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/5"
               >
                 <div className="flex items-start gap-5">
                   <div className="flex-shrink-0 p-3 rounded-xl bg-white/5 border border-white/10">
-                    <Icon className={`w-6 h-6 ${feature.iconColor}`} />
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
