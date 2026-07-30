@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
   ArrowLeft,
-  ExternalLink,
+  ArrowUpRight,
   Sparkles,
   Code2,
   Cpu,
@@ -14,6 +14,14 @@ import {
   Layers,
   Zap,
   Rocket,
+  Activity,
+  Users,
+  Bot,
+  GraduationCap,
+  Briefcase,
+  MapPin,
+  Mail,
+  Phone,
 } from "lucide-react";
 
 function GitHubIcon({ className }: { className?: string }) {
@@ -24,27 +32,73 @@ function GitHubIcon({ className }: { className?: string }) {
   );
 }
 
-// Array de Stacks focado em Engenharia de Software e IA
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
+
+// Rótulo de seção no estilo de tag JSX — referência direta à stack do dono do portfólio
+function SectionTag({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="font-mono text-sm text-amber-400/90 tracking-tight">
+      {"<"}
+      {children}
+      {" />"}
+    </span>
+  );
+}
+
 const stacks = [
   { name: "Python", category: "Backend & IA" },
   { name: "FastAPI", category: "Backend" },
+  { name: "Flask", category: "Backend" },
   { name: "Next.js", category: "Frontend Arch" },
   { name: "TypeScript", category: "Frontend Arch" },
-  { name: "LLM Local (GGUF)", category: "Engenharia de IA" },
+  { name: "CrewAI", category: "Engenharia de IA" },
+  { name: "LangChain", category: "Engenharia de IA" },
+  { name: "Google Generative AI", category: "Engenharia de IA" },
+  { name: "LLM Local (Ollama)", category: "Engenharia de IA" },
+  { name: "WebSocket", category: "Tempo Real" },
+  { name: "PostgreSQL", category: "Dados" },
+  { name: "SQLite", category: "Dados" },
+  { name: "Docker", category: "Infra" },
+  { name: "Supabase", category: "Infra" },
   { name: "Prompt Engineering", category: "Engenharia de IA" },
-  { name: "Pentest Labs", category: "Cybersecurity" },
+  { name: "Git & GitHub", category: "Ferramentas" },
+];
+
+const quickFacts = [
+  {
+    icon: GraduationCap,
+    label: "Formação",
+    value: "Engenharia de Software — Universidade Positivo (3° período)",
+  },
+  {
+    icon: Briefcase,
+    label: "Experiência",
+    value: "3 anos como Supervisor de Tecnologia + 2 anos em projetos solo",
+  },
+  {
+    icon: MapPin,
+    label: "Localização",
+    value: "Curitiba - PR",
+  },
 ];
 
 type StackGroup = { label: string; items: string[] };
 
 type Project = {
   title: string;
+  status: string;
   description: string;
   techs: string[];
   icon: typeof Code2;
   link: string;
   github: string;
-  details?: {
+  details: {
     stack: StackGroup[];
     architecture: string[];
     highlights: string[];
@@ -53,10 +107,10 @@ type Project = {
   };
 };
 
-// Projetos em destaque — os mais completos e com deploy/repositório real
 const projects: Project[] = [
   {
     title: "SaaS Barbearia (Lattech)",
+    status: "Em produção",
     description:
       "WebApp completo para agendamento de clientes e gestão administrativa de barbearias, com arquitetura multi-tenant, autenticação JWT/RBAC e upload de mídia integrado ao Supabase.",
     techs: ["Next.js", "FastAPI", "PostgreSQL", "Docker", "Supabase"],
@@ -93,6 +147,7 @@ const projects: Project[] = [
   },
   {
     title: "Agente AutoFill",
+    status: "Concluído",
     description:
       "Agente de IA que extrai dados de currículos (PDF, imagem ou texto) e preenche automaticamente formulários em portais ATS, com visão computacional multimodal e orquestração multi-agente.",
     techs: ["LangChain", "Gemini / DeepSeek", "FastAPI", "Next.js", "Docker"],
@@ -132,12 +187,115 @@ const projects: Project[] = [
   },
   {
     title: "Automação de Relatórios de Armazém",
+    status: "Concluído",
     description:
       "Script de automação para sincronização de relatórios de armazém com planilhas de gestão, eliminando trabalho manual diário.",
     techs: ["Python", "Pandas", "Automação"],
     icon: Database,
     link: "#",
     github: "",
+    details: {
+      stack: [{ label: "Automação", items: ["Python", "Pandas"] }],
+      architecture: [
+        "Script executado em rotina programada, lendo os relatórios de armazém gerados pelo sistema interno e consolidando os dados em planilhas de gestão.",
+      ],
+      highlightsLabel: "Diferencial",
+      highlights: [
+        "Elimina a atualização manual diária das planilhas, reduzindo erro humano e liberando tempo da equipe de gestão.",
+      ],
+    },
+  },
+  {
+    title: "SauTech — Gestão de Saúde",
+    status: "Concluído",
+    description:
+      "Plataforma full-stack para gestão de agendas médicas, com dashboard duplo (calendário visual e tabela profissional), CRUD de convênios e métricas em tempo real.",
+    techs: ["Next.js", "Flask", "SQLAlchemy", "Docker", "Tailwind CSS"],
+    icon: Activity,
+    link: "#",
+    github: "",
+    details: {
+      stack: [
+        { label: "Front-end", items: ["Next.js (App Router)", "TypeScript", "React", "Tailwind CSS"] },
+        { label: "Back-end", items: ["Python", "Flask", "Flask-SQLAlchemy", "Flask-Login", "Flask-Cors"] },
+        { label: "Persistência", items: ["SQLite (ORM)", "migração planejada para PostgreSQL"] },
+        { label: "Infraestrutura", items: ["Docker", "Docker Compose"] },
+      ],
+      architecture: [
+        "Arquitetura Client-Server orquestrada via Docker Compose, com backend Flask (porta 5000) e frontend Next.js (porta 3000) se comunicando por API REST.",
+        "Frontend componentizado: refatoração de um page.tsx monolítico (~600 linhas) para uma arquitetura de ~80 linhas de orquestração + 5 componentes especializados (Sidebar, CalendarView, TabulatorView, PlanosView, DashboardView).",
+        "Application Factory Pattern no backend (create_app), com 3 models ORM (User, Agendamento, Convenio) e criação automática das tabelas na inicialização.",
+        "Camada de serviços com tolerância a falhas em 3 níveis (conexão, formato de resposta e validação de campos obrigatórios) para chamadas a APIs externas.",
+      ],
+      highlightsLabel: "Diferencial Técnico",
+      highlights: [
+        "4 telas integradas: Calendário Visual, Tabela Tabulator com filtro OR (paciente, CPF ou médico), CRUD de Convênios via modal e Dashboard com KPIs e funil de atendimento.",
+        "Mini calendário dinâmico calculado a partir da data real do sistema, sem valores de mês/ano fixos no código.",
+        "Testes automatizados com Pytest cobrindo autenticação e resiliência da API (fallback quando a API externa está indisponível).",
+        "Design system próprio com paleta de cores e tipografia dedicada (Space Grotesk para títulos, Inter para texto, IBM Plex Mono para dados tabulares).",
+      ],
+    },
+  },
+  {
+    title: "Spotted Social",
+    status: "Em desenvolvimento",
+    description:
+      "Rede social universitária com feed, mensagens diretas em tempo real, mural de anúncios, eventos e um chatbot de suporte com IA — API privada por trás de um proxy Next.js.",
+    techs: ["FastAPI", "Next.js", "WebSocket", "JWT", "CrewAI"],
+    icon: Users,
+    link: "#",
+    github: "",
+    details: {
+      stack: [
+        { label: "Back-end", items: ["Python", "FastAPI (assíncrono)", "SQLAlchemy 2.0", "Alembic", "Pydantic"] },
+        { label: "Autenticação", items: ["JWT em cookies httpOnly", "Proteção CSRF"] },
+        { label: "Tempo Real", items: ["WebSocket (chat 1:1 com heartbeat e múltiplas abas)"] },
+        { label: "IA Embarcada", items: ["CrewAI", "Google Gemini (chatbot Spottinho)"] },
+        { label: "Front-end", items: ["Next.js (App Router)", "TypeScript", "Tailwind CSS", "Axios"] },
+      ],
+      architecture: [
+        "Monorepo dividido em backend_fastapi/ e frontend/, comunicando-se via proxy de rewrites do Next.js (evita CORS) ou chamadas diretas configuráveis por variável de ambiente.",
+        "Modelos ORM cobrindo usuário, posts/comentários, notificações, conversas/mensagens diretas, mural, eventos e auditoria, com tabelas associativas para seguidores e curtidas.",
+        "Middleware Edge no Next.js protegendo rotas autenticadas e redirecionando usuários já logados para longe das telas de login/registro.",
+        "API privada por design: o backend FastAPI não é exposto diretamente à internet — todo tráfego passa pelo proxy do frontend.",
+      ],
+      highlightsLabel: "Funcionalidades",
+      highlights: [
+        "Feed com posts anônimos ou identificados, curtidas, comentários e sistema de seguidores.",
+        "Direct Messages em tempo real via WebSocket, com reconexão automática e reações em mensagens.",
+        "Mural de classificados e eventos universitários com CRUD completo.",
+        "Painel administrativo com estatísticas, moderação de conteúdo, banimento de usuários e log de auditoria.",
+      ],
+    },
+  },
+  {
+    title: "Agente Spottinho (Chatbot IA)",
+    status: "Concluído",
+    description:
+      "Agente de suporte virtual do Spotted Social, com arquitetura multi-agente para interpretar dúvidas de novos usuários e buscar respostas em tempo real na base de conhecimento da plataforma.",
+    techs: ["CrewAI", "Gemini 2.5 Flash", "Ollama", "Python"],
+    icon: Bot,
+    link: "#",
+    github: "",
+    details: {
+      stack: [
+        { label: "Ambiente", items: ["Python 3.12+ (gerenciado via uv)"] },
+        { label: "Orquestração", items: ["CrewAI"] },
+        { label: "LLM em Nuvem", items: ["Google Gemini API (gemini-2.5-flash)"] },
+        { label: "LLM Local", items: ["Qwen 2.5 Coder via Ollama (execução 100% offline)"] },
+      ],
+      architecture: [
+        "Padrão ReAct (Reasoning and Acting): o agente avalia a dúvida do usuário, raciocina se possui a informação e decide se deve executar uma ação.",
+        "Function Calling (Tools): o LLM invoca de forma autônoma uma função Python decorada com @tool para consultar o manual interno da plataforma.",
+        "Separação de papéis (estilo CLT): Agent (persona, cargo e objetivos), Task (ordem de serviço e formato de saída esperado) e Crew (orquestração sequencial).",
+        "Desenhado como esqueleto isolado e modular — roda de forma independente antes de ser integrado como endpoint em um backend corporativo (ex: FastAPI).",
+      ],
+      highlightsLabel: "Diferencial",
+      highlights: [
+        "Suporte nativo a execução 100% local/offline com Qwen 2.5 Coder via Ollama, sem depender de API externa quando necessário.",
+        "Base do assistente Spottinho usado em produção dentro do Spotted Social, testável isoladamente antes da integração.",
+      ],
+    },
   },
 ];
 
@@ -153,7 +311,7 @@ function DetailSection({
   return (
     <div className="mb-8 last:mb-0">
       <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white mb-4">
-        <Icon className="w-4 h-4 text-gray-400" />
+        <Icon className="w-4 h-4 text-amber-400" />
         {title}
       </h4>
       {children}
@@ -164,7 +322,6 @@ function DetailSection({
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const Icon = project.icon;
   const d = project.details;
-  if (!d) return null;
 
   return (
     <AnimatePresence>
@@ -191,14 +348,17 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             <X className="w-4 h-4" />
           </button>
 
-          <div className="flex items-center gap-4 mb-8 pr-12">
+          <div className="flex items-center gap-4 mb-2 pr-12">
             <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
               <Icon className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+            <div>
+              <h3 className="text-2xl font-bold text-white leading-tight">{project.title}</h3>
+              <span className="text-xs font-semibold text-amber-400/90">{project.status}</span>
+            </div>
           </div>
 
-          <p className="text-gray-400 text-sm leading-relaxed mb-8">{project.description}</p>
+          <p className="text-gray-400 text-sm leading-relaxed mt-6 mb-8">{project.description}</p>
 
           <DetailSection icon={Layers} title="Stack Usada">
             <div className="space-y-3">
@@ -243,24 +403,30 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             </DetailSection>
           )}
 
-          <div className="flex items-center gap-4 mt-8 pt-6 border-t border-white/10">
-            {project.github && (
-              <a
-                href={project.github}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors"
-              >
-                <GitHubIcon className="w-4 h-4" /> Repositório
-              </a>
-            )}
-            {project.link !== "#" && (
-              <a
-                href={project.link}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors"
-              >
-                <ExternalLink className="w-4 h-4" /> Deploy
-              </a>
-            )}
-          </div>
+          {(project.github || project.link !== "#") && (
+            <div className="flex items-center gap-4 mt-8 pt-6 border-t border-white/10">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors"
+                >
+                  <GitHubIcon className="w-4 h-4" /> Repositório
+                </a>
+              )}
+              {project.link !== "#" && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-white transition-colors"
+                >
+                  <ArrowUpRight className="w-4 h-4" /> Deploy
+                </a>
+              )}
+            </div>
+          )}
         </motion.div>
       </motion.div>
     </AnimatePresence>
@@ -271,18 +437,23 @@ export default function Portfolio() {
   const [openProject, setOpenProject] = useState<number | null>(null);
 
   return (
-    <main className="min-h-screen bg-[#050505] selection:bg-white selection:text-black">
-      
-      {/* Navbar Minimalista do Portfólio */}
+    <main className="min-h-screen bg-[#050505] selection:bg-amber-400/20 selection:text-white">
+      {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group text-sm font-medium"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Voltar para a Plataforma
           </Link>
+          <div className="hidden sm:flex items-center gap-6 font-mono text-xs text-gray-500">
+            <a href="#sobre" className="hover:text-amber-400 transition-colors">sobre</a>
+            <a href="#projetos" className="hover:text-amber-400 transition-colors">projetos</a>
+            <a href="#stack" className="hover:text-amber-400 transition-colors">stack</a>
+            <a href="#contato" className="hover:text-amber-400 transition-colors">contato</a>
+          </div>
           <div className="text-white font-bold uppercase tracking-widest text-sm">
             João Rodrigues
           </div>
@@ -290,130 +461,229 @@ export default function Portfolio() {
       </nav>
 
       <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
-        
-        {/* Header Section */}
-        <motion.div 
+        {/* Hero */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-24"
+          className="mb-28"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6">
-            <Sparkles className="w-4 h-4 text-white" />
+            <Sparkles className="w-4 h-4 text-amber-400" />
             <span className="text-sm font-semibold text-gray-300">Focado em Engenharia de Agentes de IA</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
             Construindo software <span className="text-gray-500">robusto, inteligente e escalável.</span>
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl leading-relaxed">
+          <p className="text-xl text-gray-400 max-w-2xl leading-relaxed mb-8">
             Foco no desenvolvimento Full Stack moderno e na integração de Inteligência Artificial para resolver desafios complexos de negócios.
           </p>
-        </motion.div>
-
-        {/* Stacks & Techs */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-24"
-        >
-          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-            Arsenal Técnico
-            <div className="h-px bg-white/10 flex-1 ml-4"></div>
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            {stacks.map((stack, index) => (
-              <div 
-                key={index}
-                className="px-4 py-2 rounded-lg bg-[#0a0a0a] border border-white/10 text-gray-300 text-sm font-medium hover:border-white/30 hover:bg-white/5 transition-colors cursor-default"
-              >
-                {stack.name}
-              </div>
-            ))}
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="#projetos"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-black text-sm font-semibold hover:bg-amber-400 transition-colors"
+            >
+              Ver projetos
+            </a>
+            <a
+              href="#contato"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white text-sm font-semibold hover:border-white/30 transition-colors"
+            >
+              Entrar em contato
+            </a>
           </div>
         </motion.div>
 
-        {/* Projetos em Destaque */}
-        <motion.div
+        {/* Sobre */}
+        <motion.section
+          id="sobre"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="mb-28 scroll-mt-24"
         >
-          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-            Projetos em Destaque
-            <div className="h-px bg-white/10 flex-1 ml-4"></div>
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="mb-8">
+            <SectionTag>Sobre</SectionTag>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
+            <div className="md:col-span-3">
+              <h2 className="text-3xl font-bold text-white mb-6 tracking-tight">
+                Estudante de Engenharia de Software, construindo produtos reais desde antes de formar.
+              </h2>
+              <div className="space-y-4 text-gray-400 leading-relaxed">
+                <p>
+                  Curso Engenharia de Software na Universidade Positivo e Análise e Desenvolvimento de Sistemas na
+                  Unicesumar, e uso cada projeto pessoal como campo de teste para o que aprendo em sala de aula — e
+                  vice-versa. Já desenvolvi um SaaS para gestão de barbearias, sistemas de automação para empresas e
+                  uma rede social acadêmica, unindo experiência prática em Python e Next.js à engenharia de agentes de
+                  IA, minha frente de estudo mais recente.
+                </p>
+                <p>
+                  Antes de migrar para desenvolvimento em tempo integral, passei 3 anos como Supervisor de Tecnologia
+                  na Prefeitura Municipal de Rio Branco do Sul, liderando equipe técnica, controlando prazos e SLA de
+                  atendimento e gerenciando acessos e segurança da informação — uma bagagem que hoje se traduz em
+                  atenção a prazos, organização e cuidado com dados também no código que escrevo.
+                </p>
+              </div>
+            </div>
+            <div className="md:col-span-2 space-y-4">
+              {quickFacts.map((fact) => {
+                const Icon = fact.icon;
+                return (
+                  <div key={fact.label} className="p-5 rounded-xl bg-[#0a0a0a] border border-white/10">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Icon className="w-4 h-4 text-amber-400" />
+                      <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                        {fact.label}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-300 leading-snug">{fact.value}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Projetos em Destaque */}
+        <motion.section
+          id="projetos"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="mb-28 scroll-mt-24"
+        >
+          <div className="mb-8">
+            <SectionTag>Projetos</SectionTag>
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-8">Projetos em Destaque</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {projects.map((project, index) => {
               const Icon = project.icon;
-              const hasDetails = Boolean(project.details);
               return (
-                <div
+                <button
                   key={index}
-                  role={hasDetails ? "button" : undefined}
-                  tabIndex={hasDetails ? 0 : undefined}
-                  onClick={() => hasDetails && setOpenProject(index)}
-                  onKeyDown={(e) => {
-                    if (hasDetails && (e.key === "Enter" || e.key === " ")) setOpenProject(index);
-                  }}
-                  className={`group relative p-8 rounded-2xl bg-[#0a0a0a] border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 flex flex-col h-full ${
-                    hasDetails ? "cursor-pointer" : ""
-                  }`}
+                  type="button"
+                  onClick={() => setOpenProject(index)}
+                  className="group text-left relative p-8 rounded-2xl bg-[#0a0a0a] border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40 flex flex-col h-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60"
                 >
                   <div className="flex items-center justify-between mb-6">
                     <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
                       <Icon className="w-6 h-6 text-white" />
                     </div>
-                    <div className="flex items-center gap-3">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          onClick={(e) => e.stopPropagation()}
-                          className="text-gray-500 hover:text-white transition-colors"
-                        >
-                          <GitHubIcon className="w-5 h-5" />
-                        </a>
-                      )}
-                      {project.link !== "#" && (
-                        <a
-                          href={project.link}
-                          onClick={(e) => e.stopPropagation()}
-                          className="text-gray-500 hover:text-white transition-colors"
-                        >
-                          <ExternalLink className="w-5 h-5" />
-                        </a>
-                      )}
-                    </div>
+                    <span className="text-xs font-semibold text-gray-500">{project.status}</span>
                   </div>
-                  
+
                   <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-8 flex-1">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mt-auto mb-2">
+                  <p className="text-gray-400 text-sm leading-relaxed mb-8 flex-1">{project.description}</p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.techs.map((tech, i) => (
-                      <span key={i} className="text-xs font-semibold text-gray-500 bg-white/5 px-2.5 py-1 rounded-md border border-white/5">
+                      <span
+                        key={i}
+                        className="text-xs font-semibold text-gray-500 bg-white/5 px-2.5 py-1 rounded-md border border-white/5"
+                      >
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  {hasDetails && (
-                    <span className="text-xs font-semibold text-gray-500 group-hover:text-gray-300 transition-colors mt-4">
-                      Ver detalhes técnicos →
-                    </span>
-                  )}
-                </div>
-              )
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400/90 group-hover:text-amber-300 transition-colors mt-auto">
+                    + Informações
+                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </span>
+                </button>
+              );
             })}
           </div>
-        </motion.div>
+        </motion.section>
 
+        {/* Stacks & Techs */}
+        <motion.section
+          id="stack"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="mb-28 scroll-mt-24"
+        >
+          <div className="mb-8">
+            <SectionTag>Stack</SectionTag>
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-8">Arsenal Técnico</h2>
+          <div className="flex flex-wrap gap-3">
+            {stacks.map((stack, index) => (
+              <div
+                key={index}
+                className="px-4 py-2 rounded-lg bg-[#0a0a0a] border border-white/10 text-gray-300 text-sm font-medium hover:border-amber-400/40 hover:bg-white/5 transition-colors cursor-default"
+              >
+                {stack.name}
+              </div>
+            ))}
+          </div>
+        </motion.section>
       </div>
 
-      {openProject !== null && projects[openProject].details && (
+      {/* Contato / Rodapé */}
+      <footer id="contato" className="border-t border-white/10 scroll-mt-24">
+        <div className="max-w-5xl mx-auto px-6 py-16">
+          <div className="mb-8">
+            <SectionTag>Contato</SectionTag>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-4 tracking-tight">Vamos conversar?</h2>
+              <p className="text-gray-400 leading-relaxed max-w-md">
+                Aberto a oportunidades de estágio e desenvolvimento — e sempre disposto a trocar ideia sobre
+                engenharia de agentes de IA.
+              </p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <a
+                href="mailto:joaorodriguesdev@hotmail.com"
+                className="flex items-center gap-3 text-gray-300 hover:text-amber-400 transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                joaorodriguesdev@hotmail.com
+              </a>
+              <a
+                href="tel:+5541995707907"
+                className="flex items-center gap-3 text-gray-300 hover:text-amber-400 transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                (41) 99570-7907
+              </a>
+              <a
+                href="https://github.com/joaorodriguesdev-detect"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-gray-300 hover:text-amber-400 transition-colors"
+              >
+                <GitHubIcon className="w-4 h-4" />
+                github.com/joaorodriguesdev-detect
+              </a>
+              <a
+                href="https://linkedin.com/in/joaorodrigues-dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-gray-300 hover:text-amber-400 transition-colors"
+              >
+                <LinkedInIcon className="w-4 h-4" />
+                linkedin.com/in/joaorodrigues-dev
+              </a>
+            </div>
+          </div>
+          <div className="mt-16 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-gray-600">
+            <span>© {new Date().getFullYear()} João Rodrigues. Todos os direitos reservados.</span>
+            <span className="font-mono">Curitiba, PR — Brasil</span>
+          </div>
+        </div>
+      </footer>
+
+      {openProject !== null && (
         <ProjectModal project={projects[openProject]} onClose={() => setOpenProject(null)} />
       )}
     </main>
