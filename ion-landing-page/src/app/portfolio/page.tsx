@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
@@ -37,6 +37,103 @@ function LinkedInIcon({ className }: { className?: string }) {
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
     </svg>
+  );
+}
+
+// Rastro de bolhas que segue o cursor — efeito ambiente, sutil, na paleta
+// âmbar da marca. Desliga sozinho se o usuário prefere menos movimento.
+function CursorBubbles() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    if (prefersReducedMotion || isCoarsePointer) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    const resize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    };
+    window.addEventListener("resize", resize);
+
+    type Bubble = { x: number; y: number; r: number; vx: number; vy: number; life: number; maxLife: number; hue: "amber" | "white" };
+    let bubbles: Bubble[] = [];
+    let lastSpawn = 0;
+
+    const onMove = (e: MouseEvent) => {
+      const now = performance.now();
+      if (now - lastSpawn < 40) return; // limita taxa de criação
+      lastSpawn = now;
+      const count = 1 + Math.round(Math.random());
+      for (let i = 0; i < count; i++) {
+        bubbles.push({
+          x: e.clientX + (Math.random() - 0.5) * 10,
+          y: e.clientY + (Math.random() - 0.5) * 10,
+          r: 2 + Math.random() * 4,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: -0.4 - Math.random() * 0.6,
+          life: 0,
+          maxLife: 60 + Math.random() * 40,
+          hue: Math.random() > 0.35 ? "amber" : "white",
+        });
+      }
+      if (bubbles.length > 140) bubbles = bubbles.slice(-140);
+    };
+    window.addEventListener("mousemove", onMove, { passive: true });
+
+    let frame = 0;
+    let running = true;
+    const tick = () => {
+      if (!running) return;
+      ctx.clearRect(0, 0, width, height);
+      bubbles = bubbles.filter((b) => b.life < b.maxLife);
+      for (const b of bubbles) {
+        b.life += 1;
+        b.x += b.vx + Math.sin(b.life * 0.08 + b.x) * 0.15;
+        b.y += b.vy;
+        const t = b.life / b.maxLife;
+        const alpha = t < 0.15 ? t / 0.15 : 1 - (t - 0.15) / 0.85;
+        const radius = b.r * (1 - t * 0.3);
+        const color = b.hue === "amber" ? "251,191,36" : "255,255,255";
+        const gradient = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, radius * 3);
+        gradient.addColorStop(0, `rgba(${color},${alpha * 0.55})`);
+        gradient.addColorStop(1, `rgba(${color},0)`);
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, radius * 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+
+    return () => {
+      running = false;
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", onMove);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 z-0 pointer-events-none"
+      aria-hidden="true"
+    />
   );
 }
 
@@ -437,10 +534,11 @@ export default function Portfolio() {
   const [openProject, setOpenProject] = useState<number | null>(null);
 
   return (
-    <main className="min-h-screen bg-[#050505] selection:bg-amber-400/20 selection:text-white">
+    <main className="min-h-screen bg-[#050505] selection:bg-amber-400/20 selection:text-white relative">
+      <CursorBubbles />
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-10 xl:px-16 h-20 flex items-center justify-between">
           <Link
             href="/"
             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group text-sm font-medium"
@@ -460,7 +558,7 @@ export default function Portfolio() {
         </div>
       </nav>
 
-      <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
+      <div className="relative z-10 max-w-[1600px] mx-auto px-6 sm:px-10 xl:px-16 pt-32 pb-24">
         {/* Hero */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -472,7 +570,7 @@ export default function Portfolio() {
             <Sparkles className="w-4 h-4 text-amber-400" />
             <span className="text-sm font-semibold text-gray-300">Focado em Engenharia de Agentes de IA</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
+          <h1 className="text-4xl md:text-6xl xl:text-7xl font-extrabold text-white tracking-tight mb-6 max-w-4xl">
             Construindo software <span className="text-gray-500">robusto, inteligente e escalável.</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl leading-relaxed mb-8">
@@ -628,8 +726,8 @@ export default function Portfolio() {
       </div>
 
       {/* Contato / Rodapé */}
-      <footer id="contato" className="border-t border-white/10 scroll-mt-24">
-        <div className="max-w-5xl mx-auto px-6 py-16">
+      <footer id="contato" className="relative z-10 border-t border-white/10 scroll-mt-24">
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-10 xl:px-16 py-16">
           <div className="mb-8">
             <SectionTag>Contato</SectionTag>
           </div>
