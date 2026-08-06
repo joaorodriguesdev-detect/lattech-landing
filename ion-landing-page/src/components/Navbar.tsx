@@ -20,7 +20,7 @@ export default function Navbar() {
     }
   });
 
-  if (pathname === "/demonstracao") {
+  if (pathname === "/demonstracao" || pathname.startsWith("/portfolio")) {
     return null;
   }
 

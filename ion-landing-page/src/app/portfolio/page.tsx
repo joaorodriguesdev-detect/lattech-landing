@@ -40,8 +40,10 @@ function LinkedInIcon({ className }: { className?: string }) {
   );
 }
 
-// Rastro de bolhas que segue o cursor — efeito ambiente, sutil, na paleta
-// âmbar da marca. Desliga sozinho se o usuário prefere menos movimento.
+// Rastro de bolhas — efeito ambiente na paleta azul da marca (mesma dupla de
+// cores do glow do site: --color-ion-blue e --color-ion-sky). Um punhado de
+// bolhas sobe sozinho o tempo todo, bem discreto, e mexer o mouse intensifica
+// o rastro. Desliga sozinho se o usuário prefere menos movimento.
 function CursorBubbles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -50,8 +52,7 @@ function CursorBubbles() {
     if (!canvas) return;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
-    if (prefersReducedMotion || isCoarsePointer) return;
+    if (prefersReducedMotion) return;
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
@@ -69,30 +70,49 @@ function CursorBubbles() {
     };
     window.addEventListener("resize", resize);
 
-    type Bubble = { x: number; y: number; r: number; vx: number; vy: number; life: number; maxLife: number; hue: "amber" | "white" };
+    type Bubble = { x: number; y: number; r: number; vx: number; vy: number; life: number; maxLife: number; hue: "blue" | "sky" };
     let bubbles: Bubble[] = [];
-    let lastSpawn = 0;
 
+    const spawnBubble = (x: number, y: number, spread: number) => {
+      bubbles.push({
+        x: x + (Math.random() - 0.5) * spread,
+        y: y + (Math.random() - 0.5) * spread,
+        r: 2 + Math.random() * 3.5,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -0.35 - Math.random() * 0.6,
+        life: 0,
+        maxLife: 110 + Math.random() * 70,
+        hue: Math.random() > 0.5 ? "blue" : "sky",
+      });
+      if (bubbles.length > 220) bubbles.shift();
+    };
+
+    // Lote inicial — a pessoa já vê bolhas subindo assim que a página abre,
+    // sem esperar o primeiro intervalo do gerador ambiente.
+    for (let i = 0; i < 18; i++) {
+      spawnBubble(Math.random() * width, Math.random() * height, 0);
+    }
+
+    // Rastro do mouse — nasce exatamente onde o cursor está, e a posição
+    // também alimenta a repulsão das bolhas ambiente (ver tick()).
+    let lastSpawn = 0;
+    let mouseX = -9999;
+    let mouseY = -9999;
     const onMove = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
       const now = performance.now();
-      if (now - lastSpawn < 40) return; // limita taxa de criação
+      if (now - lastSpawn < 45) return;
       lastSpawn = now;
-      const count = 1 + Math.round(Math.random());
-      for (let i = 0; i < count; i++) {
-        bubbles.push({
-          x: e.clientX + (Math.random() - 0.5) * 10,
-          y: e.clientY + (Math.random() - 0.5) * 10,
-          r: 2 + Math.random() * 4,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: -0.4 - Math.random() * 0.6,
-          life: 0,
-          maxLife: 60 + Math.random() * 40,
-          hue: Math.random() > 0.35 ? "amber" : "white",
-        });
-      }
-      if (bubbles.length > 140) bubbles = bubbles.slice(-140);
+      spawnBubble(e.clientX, e.clientY, 12);
     };
     window.addEventListener("mousemove", onMove, { passive: true });
+
+    // Bolhas ambiente — nascem sozinhas, espalhadas pela tela, o tempo todo.
+    const ambientInterval = setInterval(() => {
+      spawnBubble(Math.random() * width, height + 20, width * 0.9);
+      spawnBubble(Math.random() * width, height + 20, width * 0.9);
+    }, 260);
 
     let frame = 0;
     let running = true;
@@ -102,18 +122,31 @@ function CursorBubbles() {
       bubbles = bubbles.filter((b) => b.life < b.maxLife);
       for (const b of bubbles) {
         b.life += 1;
-        b.x += b.vx + Math.sin(b.life * 0.08 + b.x) * 0.15;
+
+        // Repulsão: bolhas perto do cursor são empurradas pra longe dele.
+        const dx = b.x - mouseX;
+        const dy = b.y - mouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const repelRadius = 130;
+        if (dist < repelRadius && dist > 0.01) {
+          const force = (1 - dist / repelRadius) * 1.4;
+          b.x += (dx / dist) * force;
+          b.y += (dy / dist) * force;
+        }
+
+        b.x += b.vx + Math.sin(b.life * 0.06 + b.x) * 0.12;
         b.y += b.vy;
         const t = b.life / b.maxLife;
         const alpha = t < 0.15 ? t / 0.15 : 1 - (t - 0.15) / 0.85;
-        const radius = b.r * (1 - t * 0.3);
-        const color = b.hue === "amber" ? "251,191,36" : "255,255,255";
-        const gradient = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, radius * 3);
-        gradient.addColorStop(0, `rgba(${color},${alpha * 0.55})`);
+        const radius = b.r * (1 - t * 0.25);
+        const color = b.hue === "blue" ? "37,99,235" : "56,189,248";
+        const gradient = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, radius * 3.5);
+        gradient.addColorStop(0, `rgba(${color},${alpha * 0.85})`);
+        gradient.addColorStop(0.5, `rgba(${color},${alpha * 0.35})`);
         gradient.addColorStop(1, `rgba(${color},0)`);
         ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(b.x, b.y, radius * 3, 0, Math.PI * 2);
+        ctx.arc(b.x, b.y, radius * 3.5, 0, Math.PI * 2);
         ctx.fill();
       }
       frame = requestAnimationFrame(tick);
@@ -123,6 +156,7 @@ function CursorBubbles() {
     return () => {
       running = false;
       cancelAnimationFrame(frame);
+      clearInterval(ambientInterval);
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMove);
     };
